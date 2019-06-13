@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "BabylonAngular": {
+    "AngularBabylon": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/BabylonAngular",
+            "outputPath": "dist/AngularBabylon",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "BabylonAngular:build"
+            "browserTarget": "AngularBabylon:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "BabylonAngular:build:production"
+              "browserTarget": "AngularBabylon:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "BabylonAngular:build"
+            "browserTarget": "AngularBabylon:build"
           }
         },
         "test": {
@@ -109,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "BabylonAngular:serve"
+            "devServerTarget": "AngularBabylon:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "BabylonAngular:serve:production"
+              "devServerTarget": "AngularBabylon:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "BabylonAngular"
+  "defaultProject": "AngularBabylon"
 }
