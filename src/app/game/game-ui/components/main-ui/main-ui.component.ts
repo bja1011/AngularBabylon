@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-ui',
@@ -7,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainUiComponent implements OnInit {
 
-  constructor() {
+  constructor(private authService: AuthService,
+              private router: Router,
+  ) {
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authService.logout()
+      .subscribe(() => {
+        this.router.navigate(['auth']);
+      });
   }
 
 }

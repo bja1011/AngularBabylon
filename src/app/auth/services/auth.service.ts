@@ -27,6 +27,18 @@ export class AuthService {
   }
 
   authenticateUser(userCredentials: UserCredentials) {
-    console.log(userCredentials);
+    return this.storeToken('testtoken');
+  }
+
+  storeToken(token: string) {
+    return of(localStorage.setItem(AUTH_TOKEN_NAME, token));
+  }
+
+  logout() {
+    return this.removeToken();
+  }
+
+  private removeToken() {
+    return of(localStorage.removeItem(AUTH_TOKEN_NAME));
   }
 }
