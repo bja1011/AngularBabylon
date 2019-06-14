@@ -22,4 +22,11 @@ describe('BabylonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render canvas element', () => {
+    fixture = TestBed.createComponent(BabylonComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('canvas')).toBeTruthy();
+  });
 });

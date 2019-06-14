@@ -18,5 +18,4 @@ export class BabylonComponent implements OnInit {
     this.game.createScene();
     this.game.doRender();
   }
-
 }

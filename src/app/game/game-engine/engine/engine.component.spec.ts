@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EngineComponent } from './engine.component';
+import { GameBabylonModule } from '../game-babylon/game-babylon.module';
 
 describe('GameEngineComponent', () => {
   let component: EngineComponent;
@@ -8,7 +9,8 @@ describe('GameEngineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EngineComponent]
+      declarations: [EngineComponent],
+      imports: [GameBabylonModule],
     })
       .compileComponents();
   }));
