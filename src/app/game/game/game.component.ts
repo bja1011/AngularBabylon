@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MyGame } from '../classes/MyGame.class';
+import { MyGame } from '../game-engine/game-babylon/classes/MyGame.class';
 
 @Component({
   selector: 'app-game',
@@ -8,12 +8,9 @@ import { MyGame } from '../classes/MyGame.class';
 })
 export class GameComponent implements OnInit {
 
-  game: MyGame;
   constructor() { }
 
   ngOnInit() {
-    this.game = new MyGame('game');
-    this.game.createScene();
-    this.game.doRender();
+
   }
 }

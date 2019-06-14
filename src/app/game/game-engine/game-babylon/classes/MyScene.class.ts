@@ -25,7 +25,7 @@ import {
   Vector3,
 } from 'babylonjs';
 import * as cannon from 'cannon';
-import { clamp } from '../Utils';
+import { clamp } from '../../../Utils';
 
 export class MyScene extends Scene {
 
