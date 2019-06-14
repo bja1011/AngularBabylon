@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AUTH_TOKEN_NAME } from '../constants/constants';
 import { Observable, of } from 'rxjs';
+import { UserCredentials } from '../interfaces/user.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class AuthService {
    */
   isLogged(): Observable<boolean> {
     return of(!!localStorage.getItem(AUTH_TOKEN_NAME));
+  }
+
+  authenticateUser(userCredentials: UserCredentials) {
+    console.log(userCredentials);
   }
 }
