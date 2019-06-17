@@ -45,8 +45,7 @@ export class MyScene extends Scene {
   }
 
   setCamera() {
-    this.camera = new FollowCamera('camera1', new Vector3(0, 5, -10), this);
-    this.camera.setTarget(Vector3.Zero());
+    this.camera = new FollowCamera('camera1', new Vector3(0, 5, 10), this);
     this.camera.heightOffset = 10;
     this.camera.rotationOffset = 0;
     this.camera.cameraAcceleration = 0.005;
