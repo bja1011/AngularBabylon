@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../../../services/game.service';
+import { Engines } from '../../../game-engine/interfaces/game.interfaces';
 
 @Component({
   selector: 'app-main-ui',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainUiComponent implements OnInit {
 
-  constructor() {
+  constructor(private gameService: GameService,
+  ) {
   }
 
   ngOnInit() {
   }
 
+  setEngine(engineId: number) {
+    this.gameService.gameEmitter.emit({
+      name: 'set-engine',
+      value: engineId
+    });
+  }
 }

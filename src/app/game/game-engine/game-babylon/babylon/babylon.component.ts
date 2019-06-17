@@ -14,7 +14,7 @@ export class BabylonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.game = new MyGame('game');
+    this.game = new MyGame('bjs-game');
     this.game.createScene();
     this.game.doRender();
   }

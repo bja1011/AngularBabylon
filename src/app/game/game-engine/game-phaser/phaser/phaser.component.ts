@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MyGame } from '../classes/MyGame.class';
 import { MyGameConfig } from '../interfaces/phaser.interfaces';
-import { MyScene } from '../classes/MyScene.class';
+import { MainScene } from '../scenes/Main.scene';
+import { GameService } from '../../../services/game.service';
 
 @Component({
   selector: 'app-phaser',
@@ -12,7 +13,8 @@ export class PhaserComponent implements OnInit {
 
   game: MyGame;
 
-  constructor() {
+  constructor(private gameService: GameService,
+  ) {
   }
 
   ngOnInit() {
@@ -21,11 +23,10 @@ export class PhaserComponent implements OnInit {
       width: innerWidth,
       height: innerHeight,
       parent: 'game',
-      scene: new MyScene({
-        gameService: null
+      scene: new MainScene({
+        gameService: this.gameService
       })
     };
     this.game = new MyGame(config);
   }
-
 }

@@ -11,6 +11,7 @@ export class MyGame {
 
   constructor(canvasElement: string) {
     this.canvas = document.getElementById(canvasElement) as HTMLCanvasElement;
+    console.log(this.canvas);
     this.engine = new Engine(this.canvas, true);
   }
 

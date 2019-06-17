@@ -13,7 +13,7 @@ import { GamePhaserModule } from './game-phaser/game-phaser.module';
   ],
   exports: [
     EngineComponent,
-  ]
+  ],
 })
 export class GameEngineModule {
 }

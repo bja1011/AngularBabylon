@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Engines, GameEvent } from '../interfaces/game.interfaces';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-game-engine',
@@ -7,17 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EngineComponent implements OnInit {
 
-  engines = engines;
-  selectedEngine: engines = engines.phaser;
+  engines = Engines;
+  selectedEngine: Engines = 0;
 
-  constructor() {
+  constructor(private gameService: GameService,
+  ) {
+    this.gameService.gameEmitter
+      .subscribe((event: GameEvent) => {
+        switch (event.name) {
+          case 'set-engine':
+            this.selectedEngine = event.value;
+            break;
+        }
+      });
   }
 
   ngOnInit() {
   }
-}
-
-enum engines {
-  babylon,
-  phaser
 }
