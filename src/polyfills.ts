@@ -64,4 +64,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 // import * as cannon from 'cannon';
 // (window as any).CANNON = cannon;
 
-
+(window as any).global = window;

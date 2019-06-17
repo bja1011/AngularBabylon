@@ -1,1 +1,2 @@
-<app-babylon></app-babylon>
+<app-babylon *ngIf="selectedEngine === engines.babylon"></app-babylon>
+<app-phaser *ngIf="selectedEngine === engines.phaser"></app-phaser>
