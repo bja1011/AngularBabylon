@@ -18,6 +18,7 @@ import {
   Scene,
   SceneLoader,
   ShadowGenerator,
+  VirtualJoystick,
   Space,
   SSAO2RenderingPipeline,
   StandardMaterial,
@@ -51,11 +52,11 @@ export class MyScene extends Scene {
     this.camera.cameraAcceleration = 0.005;
     this.camera.maxCameraSpeed = 10;
 
-  //   this.camera.mode = FollowCamera.ORTHOGRAPHIC_CAMERA;
-  //   this.camera.orthoTop = 15;
-  //   this.camera.orthoBottom = -15;
-  //   this.camera.orthoLeft = -15;
-  //   this.camera.orthoRight = 15;
+    //   this.camera.mode = FollowCamera.ORTHOGRAPHIC_CAMERA;
+    //   this.camera.orthoTop = 15;
+    //   this.camera.orthoBottom = -15;
+    //   this.camera.orthoLeft = -15;
+    //   this.camera.orthoRight = 15;
   }
 
   setLigning() {
@@ -77,6 +78,10 @@ export class MyScene extends Scene {
     );
 
     let speed = 0;
+
+    const leftJoystick = new VirtualJoystick(true);
+    VirtualJoystick.Canvas.style.zIndex = '1';
+
     // Game/Render loop
     this.onBeforeRenderObservable.add(() => {
       if ((inputMap as any).w) {
@@ -92,7 +97,21 @@ export class MyScene extends Scene {
         player.translate(Axis.X, -0.04, Space.WORLD);
       }
       speed = clamp(speed, 0, 1);
+
+
+      if (leftJoystick.pressed) {
+        player.translate(Axis.Z, leftJoystick.deltaPosition.y * -0.1, Space.WORLD);
+        player.translate(Axis.X, leftJoystick.deltaPosition.x * -0.1, Space.WORLD);
+        // moveX = leftJoystick.deltaPosition.x * (engine.getDeltaTime()/1000) * movespeed;
+        // moveZ = leftJoystick.deltaPosition.y * (engine.getDeltaTime()/1000) * movespeed;
+        // sphere.position.x+=moveX
+        // sphere.position.z+=moveZ
+      }
+
+
     });
+
+
   }
 
   setPhysics() {
