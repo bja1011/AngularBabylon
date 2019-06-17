@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
+    "build-gh": "ng build --prod --base-href=https://bja1011.github.io/AngularGame/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,6 +25,7 @@
     "babylonjs": "^4.0.3",
     "cannon": "^0.6.2",
     "hammerjs": "^2.0.8",
+    "phaser": "^3.17.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

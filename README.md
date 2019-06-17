@@ -1,9 +1,8 @@
-# AngularBabylon
+# AngularGame
 
-## Angular 8 + BabylonJS starter.
+## Angular 8 + Game engine (BabylonJS, Phaser3) starter.
+Angular app for developing browser games.
 
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
 
 ## Installation
 
