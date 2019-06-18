@@ -14,7 +14,7 @@ export class Jelly extends GameObjects.Container {
 
     this.scene.add.existing(this);
 
-    this.shadow = this.scene.add.sprite(0, 50, JELLY_ATLAS_NAME, 'shadow.png');
+    this.shadow = this.scene.add.sprite(0, 120, JELLY_ATLAS_NAME, 'shadow.png');
     this.add(this.shadow);
 
     this.body = this.scene.add.sprite(0, 0, null);
@@ -28,7 +28,6 @@ export class Jelly extends GameObjects.Container {
 
   setBody(type: JellyBody) {
     this.body.setTexture(JELLY_ATLAS_NAME, `${type}.png`);
-    console.log(this.body);
   }
 
   setFace(type: JellyFace) {

@@ -1,7 +1,7 @@
 import { MyScene } from '../classes/MyScene.class';
 import { Jelly } from '../virtual-pet-game/jelly.class';
 import { JellyBody, JellyFace } from '../virtual-pet-game/interfaces/jelly';
-import { JELLY_ATLAS_NAME } from '../virtual-pet-game/constants';
+import { JELLY_ATLAS_NAME, UI_ATLAS_NAME } from '../virtual-pet-game/constants';
 import { filter } from 'rxjs/operators';
 
 export class MainScene extends MyScene {
@@ -15,6 +15,7 @@ export class MainScene extends MyScene {
   preload() {
     this.cameras.main.backgroundColor = new Phaser.Display.Color(140, 211, 247);
     this.load.atlas(JELLY_ATLAS_NAME, 'assets/jelly/jelly-atlas.png', 'assets/jelly/jelly-atlas.json');
+    this.load.atlas(UI_ATLAS_NAME, 'assets/ui/ui-atlas.png', 'assets/ui/ui-atlas.json');
   }
 
   create() {

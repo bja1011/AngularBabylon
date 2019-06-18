@@ -1,0 +1,26 @@
+button {
+  &.square {
+    width: 49px;
+    height: 49px;
+    border: none;
+    outline: none;
+
+    &.grey {
+      background: url(/assets/ui/grey_button08.png);
+      color: #222222;
+
+      &:active {
+        background: url(/assets/ui/grey_button12.png);
+      }
+    }
+
+    &.yellow {
+      background: url(/assets/ui/yellow_button07.png);
+      color: #555555;
+
+      &:active {
+        background: url(/assets/ui/yellow_button09.png);
+      }
+    }
+  }
+}

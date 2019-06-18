@@ -22,7 +22,15 @@ export class MainUiComponent implements OnInit {
   }
 
   randomizeJelly() {
-    this.gameService.emitGameEvent('setFace', randomEnumValue(JellyFace));
+    this.randomizeBody();
+    this.randomizeFace();
+  }
+
+  randomizeBody() {
     this.gameService.emitGameEvent('setBody', randomEnumValue(JellyBody));
+  }
+
+  randomizeFace() {
+    this.gameService.emitGameEvent('setFace', randomEnumValue(JellyFace));
   }
 }
