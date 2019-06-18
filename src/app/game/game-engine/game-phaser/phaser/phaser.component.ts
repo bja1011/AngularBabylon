@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MyGame } from '../classes/MyGame.class';
 import { MyGameConfig } from '../interfaces/phaser.interfaces';
 import { MainScene } from '../scenes/Main.scene';
@@ -9,7 +9,7 @@ import { GameService } from '../../../services/game.service';
   templateUrl: './phaser.component.html',
   styleUrls: ['./phaser.component.scss']
 })
-export class PhaserComponent implements OnInit {
+export class PhaserComponent implements OnInit, OnDestroy {
 
   game: MyGame;
 
@@ -28,5 +28,9 @@ export class PhaserComponent implements OnInit {
       })
     };
     this.game = new MyGame(config);
+  }
+
+  ngOnDestroy(): void {
+    this.game.destroy(true);
   }
 }

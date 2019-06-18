@@ -27,4 +27,8 @@ export class MyGame {
       this.engine.resize();
     });
   }
+
+  destroy() {
+    this.scene.dispose();
+  }
 }

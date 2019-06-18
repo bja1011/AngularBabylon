@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MyGame } from '../classes/MyGame.class';
 
 @Component({
@@ -6,7 +6,7 @@ import { MyGame } from '../classes/MyGame.class';
   templateUrl: './babylon.component.html',
   styleUrls: ['./babylon.component.scss']
 })
-export class BabylonComponent implements OnInit {
+export class BabylonComponent implements OnInit, OnDestroy {
 
   game: MyGame;
 
@@ -17,5 +17,9 @@ export class BabylonComponent implements OnInit {
     this.game = new MyGame('bjs-game');
     this.game.createScene();
     this.game.doRender();
+  }
+
+  ngOnDestroy(): void {
+    this.game.destroy();
   }
 }
