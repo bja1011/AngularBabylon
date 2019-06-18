@@ -82,6 +82,10 @@ export class MyScene extends Scene {
     const leftJoystick = new VirtualJoystick(true);
     VirtualJoystick.Canvas.style.zIndex = '1';
 
+    this.onDisposeObservable.add(() => {
+      VirtualJoystick.Canvas.style.zIndex = '-1';
+    });
+
     // Game/Render loop
     this.onBeforeRenderObservable.add(() => {
       if ((inputMap as any).w) {
