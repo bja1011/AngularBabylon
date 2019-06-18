@@ -16,5 +16,4 @@ export class MyScene extends Scene {
       this.cameras.resize(innerWidth, innerHeight);
     });
   }
-
 }

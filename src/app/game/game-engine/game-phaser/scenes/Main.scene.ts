@@ -2,7 +2,7 @@ import { MyScene } from '../classes/MyScene.class';
 import { Jelly } from '../virtual-pet-game/jelly.class';
 import { JellyBody, JellyFace } from '../virtual-pet-game/interfaces/jelly';
 import { JELLY_ATLAS_NAME, UI_ATLAS_NAME } from '../virtual-pet-game/constants';
-import { filter, takeUntil, takeWhile } from 'rxjs/operators';
+import { takeWhile } from 'rxjs/operators';
 
 export class MainScene extends MyScene {
 
@@ -28,21 +28,22 @@ export class MainScene extends MyScene {
 
     this.gameService.gameEmitter
       .pipe(
-        filter(event => event.name === 'setFace')
-      )
-      .subscribe(event => {
-        console.log(event.value);
-        this.jelly.setFace(event.value);
-      });
-
-    this.gameService.gameEmitter
-      .pipe(
-        filter(event => event.name === 'setBody'),
         takeWhile(() => !!this.jelly)
       )
       .subscribe(event => {
-        console.log(event.value);
-        this.jelly.setBody(event.value);
+        switch (event.name) {
+          case 'setFace':
+            this.jelly.setFace(event.value);
+            break;
+          case 'setBody':
+            this.jelly.setBody(event.value);
+            break;
+        }
       });
+
+    this.events.on('destroy', () => {
+      this.jelly.destroy();
+      this.jelly = null;
+    });
   }
 }
