@@ -16,7 +16,7 @@ export class MyGame {
     this.canvas = document.getElementById(canvasElement) as HTMLCanvasElement;
     this.engine = new Engine(this.canvas, true);
     this.gameService = gameService;
-    this.scene = new MainScene(this.engine);
+    this.scene = new MainScene(this.engine, gameService);
   }
 
   doRender(): void {

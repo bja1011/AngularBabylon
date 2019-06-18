@@ -10,7 +10,7 @@ import { GameService } from '../../services/game.service';
 export class EngineComponent implements OnInit {
 
   engines = Engines;
-  selectedEngine: Engines = 0;
+  selectedEngine: Engines = 1;
 
   constructor(private gameService: GameService,
   ) {

@@ -2,18 +2,15 @@ import { MyScene } from '../../classes/MyScene.class';
 import * as B from 'babylonjs';
 import cannon from 'cannon';
 import { GameService } from '../../../../services/game.service';
-import { takeWhile } from 'rxjs/operators';
 
-export class MainScene extends MyScene {
+export class TestScene extends MyScene {
   private camera: B.FollowCamera;
   private light: B.Light;
 
   private player: B.Mesh;
 
-  destroyed = false;
-
-  constructor(engine: B.Engine, gameService: GameService) {
-    super(engine, gameService);
+  constructor(props, gameService: GameService) {
+    super(props, gameService);
 
     this.setCamera();
     this.setLigning();
@@ -53,6 +50,45 @@ export class MainScene extends MyScene {
         inputMap[evt.sourceEvent.key] = evt.sourceEvent.type === 'keydown';
       })
     );
+
+    let speed = 0;
+
+    const leftJoystick = new B.VirtualJoystick(true);
+    B.VirtualJoystick.Canvas.style.zIndex = '1';
+
+    this.onDisposeObservable.add(() => {
+      B.VirtualJoystick.Canvas.style.zIndex = '-1';
+    });
+
+    // Game/Render loop
+    this.onBeforeRenderObservable.add(() => {
+      if ((inputMap as any).w) {
+        player.translate(B.Axis.Z, -0.04, B.Space.WORLD);
+      }
+      if ((inputMap as any).s) {
+        player.translate(B.Axis.Z, 0.04, B.Space.WORLD);
+      }
+      if ((inputMap as any).a) {
+        player.translate(B.Axis.X, 0.04, B.Space.WORLD);
+      }
+      if ((inputMap as any).d) {
+        player.translate(B.Axis.X, -0.04, B.Space.WORLD);
+      }
+
+
+      if (leftJoystick.pressed) {
+        player.translate(B.Axis.Z, leftJoystick.deltaPosition.y * -0.1, B.Space.WORLD);
+        player.translate(B.Axis.X, leftJoystick.deltaPosition.x * -0.1, B.Space.WORLD);
+        // moveX = leftJoystick.deltaPosition.x * (engine.getDeltaTime()/1000) * movespeed;
+        // moveZ = leftJoystick.deltaPosition.y * (engine.getDeltaTime()/1000) * movespeed;
+        // sphere.position.x+=moveX
+        // sphere.position.z+=moveZ
+      }
+
+
+    });
+
+
   }
 
   setPhysics() {
@@ -65,9 +101,6 @@ export class MainScene extends MyScene {
     this.player = B.MeshBuilder.CreateBox('box', {width: 1, depth: 1, height: 3}, this);
     this.player.position.y = 1;
 
-    this.player.material = new B.StandardMaterial('player', this);
-    this.player.material['diffuseColor'] = new B.Color3(1, 1, 1);
-
     const ground = B.MeshBuilder.CreateGround('ground', {width: 60, height: 60, subdivisions: 2}, this);
 
     this.setInput(this.player);
@@ -78,24 +111,6 @@ export class MainScene extends MyScene {
     ground.material['diffuseTexture'] = new B.Texture('textures/amiga.jpg', this);
     ground.material['diffuseTexture'].uScale = 3;
     ground.material['diffuseTexture'].vScale = 3;
-
-    this.onDisposeObservable.add(() => {
-
-    });
-
-    this.gameService.gameEmitter
-      .pipe(
-        takeWhile(() => !this.destroyed)
-      )
-      .subscribe((event) => {
-        switch (event.name) {
-          case 'setFace':
-            break;
-          case 'setBody':
-            this.player.material['diffuseColor'] = new B.Color3(Math.random(), Math.random(), Math.random());
-            break;
-        }
-      });
   }
 
 }
