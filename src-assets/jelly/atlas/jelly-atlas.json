@@ -1,0 +1,256 @@
+{
+  "frames": {
+    "face1.png": {
+      "frame": {
+        "x": 337,
+        "y": 548,
+        "w": 258,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 258,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 258,
+        "h": 93
+      }
+    },
+    "face2.png": {
+      "frame": {
+        "x": 614,
+        "y": 527,
+        "w": 258,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 258,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 258,
+        "h": 72
+      }
+    },
+    "face3.png": {
+      "frame": {
+        "x": 597,
+        "y": 601,
+        "w": 258,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 258,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 258,
+        "h": 72
+      }
+    },
+    "face4.png": {
+      "frame": {
+        "x": 337,
+        "y": 643,
+        "w": 258,
+        "h": 79
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 258,
+        "h": 79
+      },
+      "sourceSize": {
+        "w": 258,
+        "h": 79
+      }
+    },
+    "face5.png": {
+      "frame": {
+        "x": 597,
+        "y": 675,
+        "w": 256,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 48
+      }
+    },
+    "jelly-blue.png": {
+      "frame": {
+        "x": 1,
+        "y": 304,
+        "w": 297,
+        "h": 278
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 297,
+        "h": 278
+      },
+      "sourceSize": {
+        "w": 297,
+        "h": 278
+      }
+    },
+    "jelly-gray.png": {
+      "frame": {
+        "x": 609,
+        "y": 1,
+        "w": 297,
+        "h": 271
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 297,
+        "h": 271
+      },
+      "sourceSize": {
+        "w": 297,
+        "h": 271
+      }
+    },
+    "jelly-green.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 298,
+        "h": 301
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 298,
+        "h": 301
+      },
+      "sourceSize": {
+        "w": 298,
+        "h": 301
+      }
+    },
+    "jelly-red.png": {
+      "frame": {
+        "x": 614,
+        "y": 274,
+        "w": 297,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 297,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 297,
+        "h": 251
+      }
+    },
+    "jelly-violet.png": {
+      "frame": {
+        "x": 301,
+        "y": 1,
+        "w": 306,
+        "h": 274
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 306,
+        "h": 274
+      },
+      "sourceSize": {
+        "w": 306,
+        "h": 274
+      }
+    },
+    "jelly-yellow.png": {
+      "frame": {
+        "x": 301,
+        "y": 277,
+        "w": 311,
+        "h": 269
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 311,
+        "h": 269
+      },
+      "sourceSize": {
+        "w": 311,
+        "h": 269
+      }
+    },
+    "shadow.png": {
+      "frame": {
+        "x": 1,
+        "y": 584,
+        "w": 334,
+        "h": 150
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 334,
+        "h": 150
+      },
+      "sourceSize": {
+        "w": 334,
+        "h": 150
+      }
+    }
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "jelly-atlas.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 912,
+      "h": 735
+    },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:18168a3f4e1b9b6fbeaf3d3589560f63:9c0e26130baf90b0a8b0330fafee11b9:641e9d9b7697a37939ec40e7e3ff7487$"
+  }
+}

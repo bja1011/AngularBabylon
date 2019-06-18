@@ -11,4 +11,8 @@ export class GameService {
 
   constructor() {
   }
+
+  emitGameEvent(name: string, value: any) {
+    this.gameEmitter.emit({name, value});
+  }
 }

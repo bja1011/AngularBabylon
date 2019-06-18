@@ -17,7 +17,7 @@ export class EngineComponent implements OnInit {
     this.gameService.gameEmitter
       .subscribe((event: GameEvent) => {
         switch (event.name) {
-          case 'set-engine':
+          case 'setEngine':
             this.selectedEngine = event.value;
             break;
         }

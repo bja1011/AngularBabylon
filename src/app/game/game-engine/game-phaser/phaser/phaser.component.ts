@@ -20,11 +20,16 @@ export class PhaserComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const config: MyGameConfig = {
       type: Phaser.AUTO,
-      width: innerWidth,
-      height: innerHeight,
+      width: innerWidth * devicePixelRatio,
+      height: innerHeight * devicePixelRatio,
       parent: 'game',
+      gameService: this.gameService,
+      scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+      },
       scene: new MainScene({
-        gameService: this.gameService
+        gameService: this.gameService,
       })
     };
     this.game = new MyGame(config);
