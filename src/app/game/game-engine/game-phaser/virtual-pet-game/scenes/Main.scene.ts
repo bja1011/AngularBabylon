@@ -1,7 +1,7 @@
-import { MyScene } from '../classes/MyScene.class';
-import { Jelly } from '../virtual-pet-game/jelly.class';
-import { JellyBody, JellyFace } from '../virtual-pet-game/interfaces/jelly';
-import { JELLY_ATLAS_NAME, UI_ATLAS_NAME } from '../virtual-pet-game/constants';
+import { MyScene } from '../../classes/MyScene.class';
+import { Jelly } from '../jelly.class';
+import { JellyBody, JellyFace } from '../interfaces/jelly';
+import { JELLY_ATLAS_NAME, UI_ATLAS_NAME } from '../constants';
 import { takeWhile } from 'rxjs/operators';
 
 export class MainScene extends MyScene {

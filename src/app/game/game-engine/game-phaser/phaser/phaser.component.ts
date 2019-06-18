@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MyGame } from '../classes/MyGame.class';
 import { MyGameConfig } from '../interfaces/phaser.interfaces';
-import { MainScene } from '../scenes/Main.scene';
+import { MainScene } from '../virtual-pet-game/scenes/Main.scene';
 import { GameService } from '../../../services/game.service';
 
 @Component({

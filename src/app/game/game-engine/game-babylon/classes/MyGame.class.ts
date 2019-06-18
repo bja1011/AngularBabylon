@@ -1,22 +1,22 @@
-import { MyScene } from './MyScene.class';
 import {
   Engine,
 } from 'babylonjs';
+import { GameService } from '../../../services/game.service';
+import { MyScene } from './MyScene.class';
+import { MainScene } from '../virtual-pet-game/scenes/main.scene';
 
 export class MyGame {
 
+  gameService: GameService;
+  scene: MyScene;
   private readonly canvas: HTMLCanvasElement;
   private readonly engine: Engine;
-  private scene: MyScene;
 
-  constructor(canvasElement: string) {
+  constructor(gameService: GameService, canvasElement: string) {
     this.canvas = document.getElementById(canvasElement) as HTMLCanvasElement;
-    console.log(this.canvas);
     this.engine = new Engine(this.canvas, true);
-  }
-
-  createScene(): void {
-    this.scene = new MyScene(this.engine);
+    this.gameService = gameService;
+    this.scene = new MainScene(this.engine);
   }
 
   doRender(): void {

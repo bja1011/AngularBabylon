@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MyGame } from '../classes/MyGame.class';
+import { GameService } from '../../../services/game.service';
+import { PetGame } from '../virtual-pet-game/pet.game';
 
 @Component({
   selector: 'app-babylon',
@@ -10,12 +12,12 @@ export class BabylonComponent implements OnInit, OnDestroy {
 
   game: MyGame;
 
-  constructor() {
+  constructor(private gameService: GameService,
+  ) {
   }
 
   ngOnInit() {
-    this.game = new MyGame('bjs-game');
-    this.game.createScene();
+    this.game = new PetGame(this.gameService);
     this.game.doRender();
   }
 
