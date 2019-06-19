@@ -135,6 +135,11 @@ export class MainScene extends MyScene {
 
     const pipeline = new B.DefaultRenderingPipeline('default', true, this, [this.camera]);
     pipeline.fxaaEnabled = true;
+    pipeline.bloomEnabled = true;
+    pipeline.bloomThreshold = 0.8;
+    pipeline.bloomWeight = 0.3;
+    pipeline.bloomKernel = 64;
+    pipeline.bloomScale = 0.5;
 
     this.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('ssao', this.camera);
   }
