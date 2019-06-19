@@ -3,9 +3,7 @@ import * as B from 'babylonjs';
 import cannon from 'cannon';
 import { GameService } from '../../../../services/game.service';
 import { takeWhile } from 'rxjs/operators';
-import { Scene } from 'babylonjs';
 import 'babylonjs-loaders';
-import PointLight = BABYLON.PointLight;
 
 export class MainScene extends MyScene {
   private camera: B.FollowCamera;
@@ -76,7 +74,7 @@ export class MainScene extends MyScene {
 
   private createObjects() {
 
-    BABYLON.SceneLoader.ImportMesh('', '', 'assets/3d/jelly-world.glb', this as any, (meshes) => {
+    B.SceneLoader.ImportMesh('', '', 'assets/3d/jelly-world.glb', this as any, (meshes) => {
       meshes.forEach(mesh => mesh.receiveShadows = true);
       console.log(meshes);
 
@@ -128,12 +126,15 @@ export class MainScene extends MyScene {
       combineRatio: 1.0
     };
 
-    const ssao = new BABYLON.SSAORenderingPipeline('ssao', this as any, ssaoRatio);
+    const ssao = new B.SSAORenderingPipeline('ssao', this, ssaoRatio);
     ssao.fallOff = 0.000001;
     ssao.area = 1;
     ssao.radius = 0.0001;
     ssao.totalStrength = 1.0;
     ssao.base = 0.5;
+
+    const pipeline = new B.DefaultRenderingPipeline('default', true, this, [this.camera]);
+    pipeline.fxaaEnabled = true;
 
     this.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('ssao', this.camera);
   }
