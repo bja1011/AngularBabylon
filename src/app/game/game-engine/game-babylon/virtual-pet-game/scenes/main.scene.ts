@@ -76,7 +76,7 @@ export class MainScene extends MyScene {
 
   private createObjects() {
 
-    BABYLON.SceneLoader.ImportMesh('', '/', 'assets/3d/jelly-world.glb', this as any, (meshes) => {
+    BABYLON.SceneLoader.ImportMesh('', '', 'assets/3d/jelly-world.glb', this as any, (meshes) => {
       meshes.forEach(mesh => mesh.receiveShadows = true);
       console.log(meshes);
 
