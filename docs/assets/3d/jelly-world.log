@@ -1,0 +1,46 @@
+Exporter version: 6.0-beta 8, Blender version: 2.80 (sub 60)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		inline textures     :  false
+		Material Type       :  STD
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		texture directory   :  /home/adam/projects/x/BabylonPhaser/src/assets/3d/
+	Python World class constructor completed
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of mesh:  Sphere
+		WARNING: No materials have been assigned: 
+		num positions      :  2591
+		num normals        :  2591
+		num uvs            :  5182
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2880
+	processing begun of mesh:  Plane.001
+		processing begun of material:  jelly_world.wood-floor
+		processing begun of material:  jelly_world.wall
+			WARNING: unsupported node type(ShaderNodeNormal) will trigger baking
+		processing begun of material:  jelly_world.white
+			WARNING: Metal channel baking required, but not possible, ignored
+			WARNING: Refraction channel baking required, but not possible, ignored
+			Baking texture, type: DIFFUSE, mapped using: UVMap
+			processing texture Plane_001_baked_DIFFUSE
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			Baking texture, type: GLOSSY, mapped using: UVMap
+			processing texture Plane_001_baked_GLOSSY
+				texture type:  specularTexture, mapped using: "UVMap"
+		num positions      :  243
+		num normals        :  243
+		num uvs            :  486
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  342
+	processing begun of light (HEMI FROM AREA):  Point
+	processing begun of light (POINT):  Point.001
+========= Writing of JSON file started =========
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 59.5805 secs
