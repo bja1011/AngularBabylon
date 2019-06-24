@@ -29,10 +29,11 @@ export class MainScene extends MyScene {
 
   setCamera() {
     this.camera = new B.FollowCamera('camera1', new B.Vector3(0, 5, 10), this);
-    this.camera.heightOffset = 5;
+    this.camera.heightOffset = 2;
     this.camera.rotationOffset = 0;
-    this.camera.cameraAcceleration = 0.005;
-    this.camera.maxCameraSpeed = 10;
+    this.camera.cameraAcceleration = 0.05;
+    this.camera.maxCameraSpeed = 20;
+    this.camera.fov = 0.15;
 
     //   this.camera.mode = FollowCamera.ORTHOGRAPHIC_CAMERA;
     //   this.camera.orthoTop = 15;
@@ -78,8 +79,8 @@ export class MainScene extends MyScene {
       meshes.forEach(mesh => mesh.receiveShadows = true);
       console.log(meshes);
 
-      this.player = B.MeshBuilder.CreateSphere('player', {diameter: 2, segments: 12}, this);
-      this.player.position.y = 1;
+      this.player = B.MeshBuilder.CreateSphere('player', {diameter: 0.5, segments: 12}, this);
+      this.player.position.y = 0.25;
 
       this.player.material = new B.StandardMaterial('player', this);
       this.player.material['diffuseColor'] = new B.Color3(1, 1, 1);
@@ -91,7 +92,8 @@ export class MainScene extends MyScene {
       // ground.receiveShadows = true;
 
       this.setInput(this.player);
-      this.camera.lockedTarget = this.player;
+      // this.camera.lockedTarget = this.player;
+      this.camera.setTarget(new B.Vector3(0, 0.5, 0));
 
       // Ground
       // ground.material = new B.StandardMaterial('ground', this);
