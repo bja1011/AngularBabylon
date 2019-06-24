@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { GameService } from '../../../services/game.service';
-import { Engines } from '../../../game-engine/interfaces/game.interfaces';
+import { JellyBody, JellyFace } from '../../../game-engine/game-phaser/virtual-pet-game/interfaces/jelly';
+import { randomEnumValue } from '../../../Utils';
 
 @Component({
   selector: 'app-main-ui',
@@ -28,9 +29,19 @@ export class MainUiComponent implements OnInit {
   }
 
   setEngine(engineId: number) {
-    this.gameService.gameEmitter.emit({
-      name: 'set-engine',
-      value: engineId
-    });
+    this.gameService.emitGameEvent('setEngine', engineId);
+  }
+
+  randomizeJelly() {
+    this.randomizeBody();
+    this.randomizeFace();
+  }
+
+  randomizeBody() {
+    this.gameService.emitGameEvent('setBody', randomEnumValue(JellyBody));
+  }
+
+  randomizeFace() {
+    this.gameService.emitGameEvent('setFace', randomEnumValue(JellyFace));
   }
 }

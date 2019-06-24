@@ -10,14 +10,14 @@ import { GameService } from '../../services/game.service';
 export class EngineComponent implements OnInit {
 
   engines = Engines;
-  selectedEngine: Engines = 0;
+  selectedEngine: Engines = 1;
 
   constructor(private gameService: GameService,
   ) {
     this.gameService.gameEmitter
       .subscribe((event: GameEvent) => {
         switch (event.name) {
-          case 'set-engine':
+          case 'setEngine':
             this.selectedEngine = event.value;
             break;
         }

@@ -93,6 +93,9 @@ MIT
 babylonjs
 Apache-2.0
 
+babylonjs-loaders
+Apache-2.0
+
 cannon
 MIT
 /*
