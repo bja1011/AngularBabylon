@@ -6,7 +6,7 @@ import { takeWhile } from 'rxjs/operators';
 import 'babylonjs-loaders';
 
 export class MainScene extends MyScene {
-  private camera: B.FollowCamera;
+  private camera: B.TargetCamera;
   private light: B.Light;
 
   shadowGenerator: B.ShadowGenerator;
@@ -28,12 +28,12 @@ export class MainScene extends MyScene {
   }
 
   setCamera() {
-    this.camera = new B.FollowCamera('camera1', new B.Vector3(0, 5, 10), this);
-    this.camera.heightOffset = 2;
-    this.camera.rotationOffset = 0;
-    this.camera.cameraAcceleration = 0.05;
-    this.camera.maxCameraSpeed = 20;
-    this.camera.fov = 0.15;
+    this.camera = new B.TargetCamera('camera1', new B.Vector3(0, 1.25, 5.92), this);
+    // this.camera.heightOffset = 0;
+    // this.camera.rotationOffset = 0;
+    // this.camera.cameraAcceleration = 0.05;
+    // this.camera.maxCameraSpeed = 20;
+    this.camera.fov = 0.32;
 
     //   this.camera.mode = FollowCamera.ORTHOGRAPHIC_CAMERA;
     //   this.camera.orthoTop = 15;
@@ -80,7 +80,7 @@ export class MainScene extends MyScene {
       console.log(meshes);
 
       this.player = B.MeshBuilder.CreateSphere('player', {diameter: 0.5, segments: 12}, this);
-      this.player.position.y = 0.25;
+      this.player.position.y = 0.2;
 
       this.player.material = new B.StandardMaterial('player', this);
       this.player.material['diffuseColor'] = new B.Color3(1, 1, 1);
@@ -93,7 +93,7 @@ export class MainScene extends MyScene {
 
       this.setInput(this.player);
       // this.camera.lockedTarget = this.player;
-      this.camera.setTarget(new B.Vector3(0, 0.5, 0));
+      this.camera.setTarget(new B.Vector3(0, this.player.position.y + 0.33, 0));
 
       // Ground
       // ground.material = new B.StandardMaterial('ground', this);
