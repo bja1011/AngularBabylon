@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
 import { RootStoreModule } from './store/root-store.module';
 import { UserModuleModule } from './user/user-module.module';
+import { ApiModule } from './api/api.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserModuleModule } from './user/user-module.module';
     MatButtonModule,
     RootStoreModule,
     UserModuleModule,
+    ApiModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

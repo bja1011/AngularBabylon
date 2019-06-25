@@ -1,14 +1,15 @@
 import { Action } from '@ngrx/store';
+import { User } from '../../interfaces/user.interface';
 
 export enum UserActionTypes {
-  LoadUsers = '[User] Load Users',
-  
-  
+  SetUser = '[User] Set user',
 }
 
-export class LoadUsers implements Action {
-  readonly type = UserActionTypes.LoadUsers;
+export class SetUser implements Action {
+  readonly type = UserActionTypes.SetUser;
+
+  constructor(public payload: User) {
+  }
 }
 
-
-export type UserActions = LoadUsers;
+export type UserActions = SetUser;
