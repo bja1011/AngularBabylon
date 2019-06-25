@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GameModule } from './game/game.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
+import { RootStoreModule } from './store/root/root-store.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material';
     GameModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    RootStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

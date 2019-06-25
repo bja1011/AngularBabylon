@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "AngularBabylon"
+  "defaultProject": "AngularBabylon",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
