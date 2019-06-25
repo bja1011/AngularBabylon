@@ -28,12 +28,13 @@ export class MainScene extends MyScene {
   }
 
   setCamera() {
-    this.camera = new B.TargetCamera('camera1', new B.Vector3(0, 1.25, 5.92), this);
+    this.camera = new B.TargetCamera('camera1', new B.Vector3(0, 1.45, 7.92), this);
     // this.camera.heightOffset = 0;
     // this.camera.rotationOffset = 0;
     // this.camera.cameraAcceleration = 0.05;
     // this.camera.maxCameraSpeed = 20;
-    this.camera.fov = 0.32;
+    this.camera.fov = 0.40;
+    this.camera.setTarget(new B.Vector3(0, 1.1, 0));
 
     //   this.camera.mode = FollowCamera.ORTHOGRAPHIC_CAMERA;
     //   this.camera.orthoTop = 15;
@@ -46,10 +47,13 @@ export class MainScene extends MyScene {
 
     const pointLight = new B.PointLight('l', new B.Vector3(3, 3, 0), this);
     pointLight.shadowEnabled = true;
-    // pointLight.intensity = 10;
+    pointLight.intensity = 2;
     this.shadowGenerator = new B.ShadowGenerator(1024, pointLight);
 
     this.light = new B.HemisphericLight('light1', new B.Vector3(0, 5, 0), this);
+    // const light = new B.DirectionalLight('light2', new B.Vector3(0, 5, 0), this);
+    // light.diffuse = new BABYLON.Color3(1, 0, 0);
+    // light.specular = new BABYLON.Color3(0, 1, 0);
   }
 
   setInput(player: B.Mesh) {
@@ -75,7 +79,7 @@ export class MainScene extends MyScene {
 
   private createObjects() {
 
-    B.SceneLoader.ImportMesh('', '', 'assets/3d/jelly-world.glb', this as any, (meshes) => {
+    B.SceneLoader.ImportMesh('', '', 'assets/3d/jelly-world.gltf', this as any, (meshes) => {
       meshes.forEach(mesh => mesh.receiveShadows = true);
       console.log(meshes);
 
@@ -93,7 +97,6 @@ export class MainScene extends MyScene {
 
       this.setInput(this.player);
       // this.camera.lockedTarget = this.player;
-      this.camera.setTarget(new B.Vector3(0, this.player.position.y + 0.33, 0));
 
       // Ground
       // ground.material = new B.StandardMaterial('ground', this);
