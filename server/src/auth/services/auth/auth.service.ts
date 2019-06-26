@@ -1,13 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../../../user/services/users/users.service';
+import { UserCredentials } from '../../interfaces';
+import { User } from '../../../user/models/user.entity';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) {
+  }
 
-  async validateUser(token: string): Promise<any> {
-    // Validate if token passed along with HTTP request
-    // is associated with any registered account in the database
+  async validateUserWithToken(token: string): Promise<any> {
     return await this.usersService.findOneByToken(token);
+  }
+
+  async validateUserWithCredentials(userCredentials: UserCredentials): Promise<any> {
+    return await this.usersService.findOneByCredentials(userCredentials);
+  }
+
+  async createUserToken(user: User) {
+    return await this.usersService.createUserToken(user)
   }
 }

@@ -12,7 +12,6 @@ export class RestService {
   }
 
   request(method: string, url: string, options?: HttpOptions) {
-    console.log(url)
     return this.httpClient.request(method, url, options as any);
   }
 }

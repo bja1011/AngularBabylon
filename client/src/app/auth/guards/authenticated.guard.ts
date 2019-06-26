@@ -21,7 +21,7 @@ export class AuthenticatedGuard implements CanActivate {
     return from(this.authService.isAuthenticated())
       .pipe(
         take(1),
-        tap(v => !v && this.router.navigate(['/auth'])),
+        tap(v => !v && this.router.navigate(['/controllers'])),
         mergeMap(v => of(v))
       );
   }

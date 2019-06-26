@@ -45,12 +45,13 @@ export class MainScene extends MyScene {
 
   setLigning() {
 
-    const pointLight = new B.PointLight('l', new B.Vector3(3, 3, 0), this);
+    const pointLight = new B.PointLight('l', new B.Vector3(3, 3, 3), this);
     pointLight.shadowEnabled = true;
-    pointLight.intensity = 2;
+    // pointLight.intensity = 2;
     this.shadowGenerator = new B.ShadowGenerator(1024, pointLight);
 
-    this.light = new B.HemisphericLight('light1', new B.Vector3(0, 5, 0), this);
+    this.light = new B.HemisphericLight('light1', new B.Vector3(0, 5, 3), this);
+    this.light.intensity = 1;
     // const light = new B.DirectionalLight('light2', new B.Vector3(0, 5, 0), this);
     // light.diffuse = new BABYLON.Color3(1, 0, 0);
     // light.specular = new BABYLON.Color3(0, 1, 0);
@@ -134,9 +135,11 @@ export class MainScene extends MyScene {
     const ssao = new B.SSAORenderingPipeline('ssao', this, ssaoRatio);
     ssao.fallOff = 0.000001;
     ssao.area = 1;
-    ssao.radius = 0.0001;
-    ssao.totalStrength = 1.0;
+    ssao.radius = 0.001;
+    ssao.totalStrength = 0.9;
     ssao.base = 0.5;
+    this.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('ssao', this.camera);
+
 
     const pipeline = new B.DefaultRenderingPipeline('default', true, this, [this.camera]);
     pipeline.fxaaEnabled = true;
@@ -146,6 +149,5 @@ export class MainScene extends MyScene {
     pipeline.bloomKernel = 64;
     pipeline.bloomScale = 0.5;
 
-    this.postProcessRenderPipelineManager.attachCamerasToRenderPipeline('ssao', this.camera);
   }
 }
