@@ -7,6 +7,7 @@ import { UserToken } from '../../models/user-token.entity';
 import * as moment from 'moment';
 import * as bcrypt from 'bcrypt';
 import { HASH_SALT } from '../../../const';
+import * as passhash from 'password-hash';
 
 @Injectable()
 export class UsersService {
@@ -20,16 +21,26 @@ export class UsersService {
   }
 
   findOneByToken(token: string) {
-    return this.userRepository.findOne(token);
+    return this.userTokenRepository.findOne({
+      where: {
+        token: token
+      }
+    });
   }
 
   async findOneByCredentials(credentials: UserCredentials) {
-    return this.userRepository.find({
-      where: {
-        username: credentials.username,
-        password: await bcrypt.hash(credentials.password, HASH_SALT)
-      }
-    });
+    const user = await this.userRepository.createQueryBuilder('users')
+      .addSelect('users.username')
+      .addSelect('users.password')
+      .where('users.username = :username', {username: credentials.username})
+      .getOne();
+    if (passhash.verify(credentials.password, user.password)) {
+      return user;
+    }
+  }
+
+  async findOneById(id: number) {
+    return await this.userRepository.findOne(id);
   }
 
   async createUserToken(user: User) {

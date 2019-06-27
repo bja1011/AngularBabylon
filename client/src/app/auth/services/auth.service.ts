@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AUTH_TOKEN_NAME } from '../constants/constants';
 import { Observable, of } from 'rxjs';
 import { UserCredentials } from '../interfaces/user.interfaces';
-import { RestService } from '../../api/services/rest.service';
 import { ApiService } from '../../api/services/api.service';
 import { tap } from 'rxjs/operators';
 
@@ -34,13 +33,12 @@ export class AuthService {
     return this.apiService.request('post', 'auth/login', {
       body: userCredentials
     }).pipe(
-      // tap(token => console.log(token)),
       tap(token => this.storeToken(token))
     );
   }
 
-  storeToken(token: string) {
-    return of(localStorage.setItem(AUTH_TOKEN_NAME, token));
+  storeToken(token: any) {
+    return of(localStorage.setItem(AUTH_TOKEN_NAME, token.token));
   }
 
   logout() {

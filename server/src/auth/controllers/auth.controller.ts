@@ -13,9 +13,10 @@ export class AuthController {
 
   @Post('login')
   login(@Body() userCredentials: UserCredentials) {
-    from(this.authService.validateUserWithCredentials(userCredentials))
+    return from(this.authService.validateUserWithCredentials(userCredentials))
       .pipe(
         mergeMap(user => {
+          console.log(user)
           if (user) {
             return from(this.authService.createUserToken(user));
           } else {
@@ -23,8 +24,5 @@ export class AuthController {
           }
         })
       )
-      .subscribe(user => {
-        // console.log('user', user);
-      });
   }
 }

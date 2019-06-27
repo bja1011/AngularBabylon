@@ -1,1 +1,1 @@
-export const AUTH_TOKEN_NAME = 'ab-token';
+export const AUTH_TOKEN_NAME = 'ag-token';

@@ -11,7 +11,7 @@ export class User {
   @Column({length: 256, nullable: true})
   username: string;
 
-  @Column({length: 256, nullable: true})
+  @Column({length: 256, nullable: true, select: false})
   password: string;
 
   @OneToMany(type => UserToken, userToken => userToken.user)

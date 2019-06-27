@@ -13,6 +13,6 @@ export class UserToken {
   @Column()
   validTo: Date;
 
-  @ManyToOne(type => User, user => user.tokens)
+  @ManyToOne(type => User, user => user.tokens, {eager: true})
   user: User;
 }

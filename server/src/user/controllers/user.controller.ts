@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from '../services/users/users.service';
 
@@ -11,7 +11,8 @@ export class UserController {
 
   @Get('get')
   @UseGuards(AuthGuard('bearer'))
-  getUser() {
-    return {id: 4};
+  getUser(@Req() req) {
+    return this.usersService.findOneById(req.user.user.id);
+    // return this.usersService.findOneByToken();
   }
 }
