@@ -17,6 +17,6 @@ export class AuthService {
   }
 
   async createUserToken(user: User) {
-    return await this.usersService.createUserToken(user)
+    return await this.usersService.createUserToken(user);
   }
 }

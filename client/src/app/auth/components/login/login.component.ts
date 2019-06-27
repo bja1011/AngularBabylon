@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { State } from '../../../store/root/reducers';
 import { Store } from '@ngrx/store';
 import { SetUser } from '../../../user/store/actions/user.actions';
+import { User } from '../../../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -31,8 +32,8 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     })
-      .subscribe(() => {
-        this.store.dispatch(new SetUser({id: 1}));
+      .subscribe((token) => {
+        this.store.dispatch(new SetUser(token.user));
         this.router.navigate(['']);
       });
   }
@@ -48,5 +49,13 @@ export class LoginComponent implements OnInit {
         [Validators.required]
       ]
     });
+  }
+
+  playAsGuest() {
+    this.authService.register()
+      .subscribe((token) => {
+        this.store.dispatch(new SetUser(token.user));
+        this.router.navigate(['']);
+      });
   }
 }

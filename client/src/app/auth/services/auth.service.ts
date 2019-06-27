@@ -48,4 +48,12 @@ export class AuthService {
   private removeToken() {
     return of(localStorage.removeItem(AUTH_TOKEN_NAME));
   }
+
+  register(userData?: unknown) {
+    return this.apiService.request('post', 'user/register', {
+      body: {userData}
+    }).pipe(
+      tap(token => this.storeToken(token))
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from '../services/users/users.service';
 
@@ -14,5 +14,10 @@ export class UserController {
   getUser(@Req() req) {
     return this.usersService.findOneById(req.user.user.id);
     // return this.usersService.findOneByToken();
+  }
+
+  @Post('register')
+  registerUser(@Req() req) {
+    return this.usersService.register(req.body);
   }
 }

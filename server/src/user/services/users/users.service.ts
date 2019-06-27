@@ -51,4 +51,15 @@ export class UsersService {
     ent.user = await this.userRepository.findOne(user.id);
     return await this.userTokenRepository.save(ent);
   }
+
+  async createUser(userData?: unknown) {
+    return await this.userRepository.save({});
+  }
+
+  async register(userData?: unknown) {
+    const user = await this.createUser({})
+    const token = await this.createUserToken(user);
+    console.log(token)
+    return token;
+  }
 }
